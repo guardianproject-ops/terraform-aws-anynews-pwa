@@ -90,22 +90,19 @@ The table below correctly indicates which inputs are required.
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.52.0 |
+No providers.
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_cdn"></a> [cdn](#module\_cdn) | cloudposse/cloudfront-s3-cdn/aws | 0.86.0 |
+| <a name="module_ci_user"></a> [ci\_user](#module\_ci\_user) | cloudposse/iam-system-user/aws | 1.1.0 |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
 
 ## Resources
 
-| Name | Type |
-|------|------|
-| [aws_availability_zones.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
-| [aws_caller_identity.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+No resources.
 
 ## Inputs
 
@@ -132,7 +129,13 @@ The table below correctly indicates which inputs are required.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_cdn"></a> [cdn](#output\_cdn) | All the outputs from the upstream cloudposse/cloudfront-s3-cdn/aws module |
+| <a name="output_cf_domain_name"></a> [cf\_domain\_name](#output\_cf\_domain\_name) | Domain name corresponding to the distribution where the PWA is served. |
+| <a name="output_ci_user_access_key_id"></a> [ci\_user\_access\_key\_id](#output\_ci\_user\_access\_key\_id) | The access key id for CI to publish the PWA into the bucket. |
+| <a name="output_ci_user_secret_access_key"></a> [ci\_user\_secret\_access\_key](#output\_ci\_user\_secret\_access\_key) | The secret access key for CI to publish the PWA into the bucket. |
+| <a name="output_s3_bucket_name"></a> [s3\_bucket\_name](#output\_s3\_bucket\_name) | Name of S3 bucket where the PWA is hosted |
 <!-- markdownlint-restore -->
 
 
