@@ -1,10 +1,14 @@
+output "ci_user_arn" {
+  value       = local.enabled ? aws_iam_user.deploy_user.arn : null
+  description = "The ARN of the IAM user for CI"
+}
 output "ci_user_access_key_id" {
-  value       = local.enabled ? module.ci_user[0].access_key_id : null
+  value       = local.enabled ? aws_iam_access_key.deploy_user_key_v1.id : null
   description = "The access key id for CI to publish the PWA into the bucket."
 }
 
 output "ci_user_secret_access_key" {
-  value       = local.enabled ? module.ci_user[0].secret_access_key : null
+  value       = local.enabled ? aws_iam_access_key.deploy_user_key_v1.secret : null
   sensitive   = true
   description = "The secret access key for CI to publish the PWA into the bucket."
 }

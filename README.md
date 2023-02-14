@@ -1,6 +1,6 @@
 
 <!-- markdownlint-disable -->
-# terraform-skeleton
+# terraform-aws-anynews-pwa
 <!-- markdownlint-restore -->
 
 <!-- [![README Header][readme_header_img]][readme_header_link] -->
@@ -28,10 +28,7 @@
 
 -->
 
-
-This is an example skeleton to provide all the scaffolding for a typical
-well-built gpops Terraform module. It's a template repository you can use
-when creating new repositories. This is not a useful module by itself.
+This module deployes an S3 bucket and Cloudfront CDN for serving the [AnyNews web client](https://gitlab.com/guardianproject/anynews/anynews-web-client).
 
 ---
 
@@ -66,14 +63,7 @@ the registry shows many of our inputs as required when in fact they are optional
 The table below correctly indicates which inputs are required.
 
 
-1. Use this repo as a template for a new repo.
-2. Run `github/init/context.tf` to update the `context.tf` file.
-3. Replace the Terraform code at the root of the repo with the code you want to publish.
-   Please keep `context.tf` in place.
-4. Run `make lint` to check your code for errors and warnings.
-5. Edit README.yaml and fill out all the information for your module
-6. Run `make readme` to create the README.md
-7. Commit everything to `git` and open your first MR on the new repo.
+<no value>
 
 
 
@@ -90,19 +80,26 @@ The table below correctly indicates which inputs are required.
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.54.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_cdn"></a> [cdn](#module\_cdn) | cloudposse/cloudfront-s3-cdn/aws | 0.86.0 |
-| <a name="module_ci_user"></a> [ci\_user](#module\_ci\_user) | cloudposse/iam-system-user/aws | 1.1.0 |
+| <a name="module_lambda_edge"></a> [lambda\_edge](#module\_lambda\_edge) | cloudposse/cloudfront-s3-cdn/aws//modules/lambda@edge | 0.86.0 |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [aws_iam_access_key.deploy_user_key_v1](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key) | resource |
+| [aws_iam_user.deploy_user](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user) | resource |
+| [aws_iam_user_policy.deploy_rw](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy) | resource |
+| [aws_iam_policy_document.deploy_rw](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs
 
@@ -134,6 +131,7 @@ No resources.
 | <a name="output_cdn"></a> [cdn](#output\_cdn) | All the outputs from the upstream cloudposse/cloudfront-s3-cdn/aws module |
 | <a name="output_cf_domain_name"></a> [cf\_domain\_name](#output\_cf\_domain\_name) | Domain name corresponding to the distribution where the PWA is served. |
 | <a name="output_ci_user_access_key_id"></a> [ci\_user\_access\_key\_id](#output\_ci\_user\_access\_key\_id) | The access key id for CI to publish the PWA into the bucket. |
+| <a name="output_ci_user_arn"></a> [ci\_user\_arn](#output\_ci\_user\_arn) | The ARN of the IAM user for CI |
 | <a name="output_ci_user_secret_access_key"></a> [ci\_user\_secret\_access\_key](#output\_ci\_user\_secret\_access\_key) | The secret access key for CI to publish the PWA into the bucket. |
 | <a name="output_s3_bucket_name"></a> [s3\_bucket\_name](#output\_s3\_bucket\_name) | Name of S3 bucket where the PWA is hosted |
 <!-- markdownlint-restore -->
@@ -142,7 +140,7 @@ No resources.
 
 ## Share the Love
 
-Like this project? Please give it a ★ on [our GitLab](https://gitlab.com/guardianproject-ops/terraform-skeleton)! (it helps us **a lot**)
+Like this project? Please give it a ★ on [our GitLab](https://gitlab.com/guardianproject-ops/terraform-aws-anynews-pwa)! (it helps us **a lot**)
 
 
 
@@ -155,7 +153,7 @@ Check out these related projects.
 
 **Got a question?** We got answers.
 
-File a GitLab [issue](https://gitlab.com/guardianproject-ops/terraform-skeleton/-/issues), send us an [email][email] or join our [Matrix Community][matrix].
+File a GitLab [issue](https://gitlab.com/guardianproject-ops/terraform-aws-anynews-pwa/-/issues), send us an [email][email] or join our [Matrix Community][matrix].
 
 ## Matrix Community
 
@@ -169,7 +167,7 @@ together as a community to build on our open source code.
 
 ### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://gitlab.com/guardianproject-ops/terraform-skeleton/-/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://gitlab.com/guardianproject-ops/terraform-aws-anynews-pwa/-/issues) to report any bugs or file feature requests.
 
 ### Developing
 
@@ -264,14 +262,14 @@ us][website] to get support with using our projects.
 
 
 <!-- markdownlint-disable -->
-  [website]: https://guardianproject.info/?utm_source=gitlab&utm_medium=readme&utm_campaign=guardianproject-ops/terraform-skeleton&utm_content=website
+  [website]: https://guardianproject.info/?utm_source=gitlab&utm_medium=readme&utm_campaign=guardianproject-ops/terraform-aws-anynews-pwa&utm_content=website
   [gitlab]: https://www.gitlab.com/guardianproject-ops
   [contact]: https://guardianproject.info/contact/
   [matrix]: https://matrix.to/#/%23guardianproject:matrix.org
   [readme_header_img]: https://gitlab.com/guardianproject/guardianprojectpublic/-/raw/master/Graphics/GuardianProject/pngs/logo-color-w256.png
-  [readme_header_link]: https://guardianproject.info?utm_source=gitlab&utm_medium=readme&utm_campaign=guardianproject-ops/terraform-skeleton&utm_content=readme_header_link
+  [readme_header_link]: https://guardianproject.info?utm_source=gitlab&utm_medium=readme&utm_campaign=guardianproject-ops/terraform-aws-anynews-pwa&utm_content=readme_header_link
   [readme_commercial_support_img]: https://www.sr2.uk/readme/paid-support.png
-  [readme_commercial_support_link]: https://www.sr2.uk/?utm_source=gitlab&utm_medium=readme&utm_campaign=guardianproject-ops/terraform-skeleton&utm_content=readme_commercial_support_link
+  [readme_commercial_support_link]: https://www.sr2.uk/?utm_source=gitlab&utm_medium=readme&utm_campaign=guardianproject-ops/terraform-aws-anynews-pwa&utm_content=readme_commercial_support_link
   [partner]: https://guardianproject.info/how-you-can-work-with-us/
   [nonops]: https://gitlab.com/guardianproject
   [mastadon]: https://social.librem.one/@guardianproject

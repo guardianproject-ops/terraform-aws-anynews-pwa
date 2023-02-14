@@ -5,35 +5,24 @@
 #
 
 # Name of this project
-name: terraform-skeleton
+name: terraform-aws-anynews-pwa
 
 # License of this project
 license: "AGPL3"
 
 # Canonical GitLab repo
-gitlab_repo: guardianproject-ops/terraform-skeleton
+gitlab_repo: guardianproject-ops/terraform-aws-anynews-pwa
 
 # Badges to display
 badges: []
 
 # Short description of this project
 description: |-
-
-  This is an example skeleton to provide all the scaffolding for a typical
-  well-built gpops Terraform module. It's a template repository you can use
-  when creating new repositories. This is not a useful module by itself.
+  This module deployes an S3 bucket and Cloudfront CDN for serving the [AnyNews web client](https://gitlab.com/guardianproject/anynews/anynews-web-client).
 
 
 # How to use this project
-usage: |-
-  1. Use this repo as a template for a new repo.
-  2. Run `github/init/context.tf` to update the `context.tf` file.
-  3. Replace the Terraform code at the root of the repo with the code you want to publish.
-     Please keep `context.tf` in place.
-  4. Run `make lint` to check your code for errors and warnings.
-  5. Edit README.yaml and fill out all the information for your module
-  6. Run `make readme` to create the README.md
-  7. Commit everything to `git` and open your first MR on the new repo.
+usage:
 
 related: []
 

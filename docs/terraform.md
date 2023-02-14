@@ -8,19 +8,26 @@
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.54.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_cdn"></a> [cdn](#module\_cdn) | cloudposse/cloudfront-s3-cdn/aws | 0.86.0 |
-| <a name="module_ci_user"></a> [ci\_user](#module\_ci\_user) | cloudposse/iam-system-user/aws | 1.1.0 |
+| <a name="module_lambda_edge"></a> [lambda\_edge](#module\_lambda\_edge) | cloudposse/cloudfront-s3-cdn/aws//modules/lambda@edge | 0.86.0 |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [aws_iam_access_key.deploy_user_key_v1](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key) | resource |
+| [aws_iam_user.deploy_user](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user) | resource |
+| [aws_iam_user_policy.deploy_rw](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy) | resource |
+| [aws_iam_policy_document.deploy_rw](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs
 
@@ -52,6 +59,7 @@ No resources.
 | <a name="output_cdn"></a> [cdn](#output\_cdn) | All the outputs from the upstream cloudposse/cloudfront-s3-cdn/aws module |
 | <a name="output_cf_domain_name"></a> [cf\_domain\_name](#output\_cf\_domain\_name) | Domain name corresponding to the distribution where the PWA is served. |
 | <a name="output_ci_user_access_key_id"></a> [ci\_user\_access\_key\_id](#output\_ci\_user\_access\_key\_id) | The access key id for CI to publish the PWA into the bucket. |
+| <a name="output_ci_user_arn"></a> [ci\_user\_arn](#output\_ci\_user\_arn) | The ARN of the IAM user for CI |
 | <a name="output_ci_user_secret_access_key"></a> [ci\_user\_secret\_access\_key](#output\_ci\_user\_secret\_access\_key) | The secret access key for CI to publish the PWA into the bucket. |
 | <a name="output_s3_bucket_name"></a> [s3\_bucket\_name](#output\_s3\_bucket\_name) | Name of S3 bucket where the PWA is hosted |
 <!-- markdownlint-restore -->
