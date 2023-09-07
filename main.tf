@@ -123,7 +123,7 @@ module "lambda_edge" {
 module "cdn" {
   #source                              = "cloudposse/cloudfront-s3-cdn/aws"
   #version                             = "0.86.0"
-  source                              = "/workspace/terraform-aws-cloudfront-s3-cdn"
+  source                              = "git::https://github.com/abeluck/terraform-aws-cloudfront-s3-cdn.git?ref=fix/bug-257"
   count                               = local.enabled ? 1 : 0
   context                             = module.this.context
   cloudfront_access_logging_enabled   = true
@@ -131,7 +131,7 @@ module "cdn" {
   deployment_principals = {
     "deploy_user" : {
       "arn" : aws_iam_user.deploy_user.arn
-      "path_prefix" : ""
+      "path_prefix" : [""]
     }
   }
   lambda_function_association = module.lambda_edge[0].lambda_function_association
